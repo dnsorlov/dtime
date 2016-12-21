@@ -1,0 +1,134 @@
+.dtcalendar
+  padding 3px
+  position absolute
+  z-index 10
+  top 40px
+  left 9px
+  border 1px solid #ddd
+  box-shadow 1px 4px 10px 0px rgba(189, 189, 189, 0.3)
+  border-collapse collapse
+  background-color #fff
+  width 200px
+  display block
+  border-radius 2px
+
+  &__header
+    text-align center
+    padding-top 4px
+
+  &__header-el
+    cursor: pointer
+
+  &__header-separator
+    padding 0 5px
+    color #333333
+
+  .currDay
+    background-color #ffeab9 !important
+
+  .weekEnd
+    color #f5472e
+
+  &.show-left
+    right 5px
+    left auto !important
+
+  &.show-bottom
+  &.show-top
+    &:before
+      border-left 7px solid transparent
+      border-right 7px solid transparent
+      border-bottom 7px solid #cccccc
+      border-bottom-color rgba(0, 0, 0, 0.2)
+      content ''
+      top -7px
+      left 6px
+      display inline-block
+      position absolute
+    &:after
+      border-left 6px solid transparent
+      border-right 6px solid transparent
+      border-bottom 6px solid white
+      content ''
+      top -6px
+      left 7px
+      display inline-block
+      position absolute
+
+  &.show-top
+    bottom 0
+
+  &__table
+    display block
+
+  th
+    padding 3px
+    font-weight normal
+    color #888
+  td
+    text-align center
+    margin 0 !important
+    height 23px
+    width 23px
+
+    &:hover
+      background-color #e3e3e3 !important
+      cursor pointer !important
+
+    &:empty
+      border none !important
+      background-color #fff !important
+      height 0
+      &:hover
+        cursor default !important
+        background-color #fff
+    &.selected
+      background-color #609bce !important
+      color white
+      cursor default
+
+      &:hover
+        background-color #357ebd !important
+
+
+.month-year-grid
+  position absolute
+  bottom 0
+  height calc(100% - 30px)
+  background-color #FFF
+
+  &__el
+    height 33.33%
+    width 25%
+    display inline-block
+    text-align center
+    line-height 50px
+    cursor pointer
+    &.is-active
+      background-color red
+    &.is-current
+      color green
+
+[class^="icon-"], [class*=" icon-"]
+  &:before
+    content:''
+    width 100%
+    height 100%
+    display block
+    background-repeat no-repeat
+    background-position center
+    background-size contain
+    color #000
+
+.icon-calendar:before
+  background-image url($calendar)
+
+.icon-cross:before
+  background-image url($cross)
+
+.icon-angle-up:before
+  background-image url($angle)
+
+.icon-angle-down:before
+  background-image url($angle)
+  transform rotate(180deg)

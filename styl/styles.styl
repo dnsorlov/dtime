@@ -1,0 +1,61 @@
+
+&__input
+  padding: 0px 0px 0px 5px
+  outline: none
+  display: inline-block
+  vertical-align: middle
+  line-height: 31px
+
+&__digit
+  padding: 4px 2px
+  &._state_selected
+    background-color: rgba(66, 139, 202, 0.24)
+
+&__field
+  display: inline-block
+  border: 1px solid #ddd
+  border-radius: 2px
+  outline: none
+
+&__sep
+  font-style: normal
+  color: #999
+
+&__actions
+  display: inline-block
+  vertical-align: bottom
+
+&__action
+  padding: 9px
+  border-left: 1px solid #ddd
+  background-color: #eee
+  color: #444
+  cursor: pointer
+  display: inline-block
+  width: 14px
+  height: 14px
+  vertical-align bottom
+
+  &:active
+    background-color: #d9d9d9
+
+&__arrows
+  display: inline-block
+  vertical-align: bottom
+  padding-left: 5px
+
+&__arrow
+  display: block
+  border-left: 1px solid #ddd
+  background-color: #eee
+  color: #444
+  padding: 2px
+  border-bottom: 1px solid #ddd
+  overflow: hidden
+  cursor: pointer
+  width: 11px
+  height: 11px
+  &:active
+    background-color: #d9d9d9
+  &._state_disabled
+    opacity: 0.5
