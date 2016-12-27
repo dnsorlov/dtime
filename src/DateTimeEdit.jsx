@@ -512,7 +512,7 @@ export class CustomDateTimeEditor extends Component {
             exClassName='_size_middle'
             onClick={name => this.onDigitClick(name)}/>
 
-          <i className='dtime__sep _nogaps'>&nbsp;&nbsp;</i>
+          <i className='dtime__sep _gap'> </i>
 
           <Digits
             name='HH'
@@ -523,7 +523,7 @@ export class CustomDateTimeEditor extends Component {
             selected={(this.state.selectedElementName == 'HH') && !this.props.disabled}
             onClick={name => this.onDigitClick(name)}/>
 
-          <i className='dtime__sep _nogaps'>:</i>
+          <i className='dtime__sep'>:</i>
 
           <Digits
             name='mm'
@@ -536,7 +536,7 @@ export class CustomDateTimeEditor extends Component {
 
           {this.props.useSeconds &&
             <span>
-              <i className='dtime__sep _nogaps'>:</i>
+              <i className='dtime__sep'>:</i>
               <Digits
                 name='SS'
                 emptyMask='ss'
@@ -547,6 +547,9 @@ export class CustomDateTimeEditor extends Component {
                 onClick={name => this.onDigitClick(name)}/>
             </span>
           }
+
+          <i className='dtime__sep _gap'> </i>
+
           {this.props.hasArrows &&
           <i className='dtime__arrows'>
             <a
