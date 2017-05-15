@@ -1,4 +1,5 @@
-import React, {Component, PropTypes as PT} from 'react';
+import React, {Component} from 'react';
+import PT from 'prop-types';
 import classNames from 'classnames';
 
 class DTYearsGrid extends Component {

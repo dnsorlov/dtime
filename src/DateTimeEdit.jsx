@@ -1,4 +1,5 @@
-import React, {Component, PropTypes as PT} from 'react';
+import React, {Component} from 'react';
+import PT from 'prop-types'
 import DTCalendar from './DTCalendar.jsx';
 let clnm = require('classnames');
 
@@ -28,7 +29,7 @@ class Digits extends Component {
       ? value = this.props.overrideValue
       : value = this.props.value;
 
-    if (typeof value != 'number') return this.props.emptyMask;
+    if (typeof value !== 'number') return this.props.emptyMask;
 
     let res = String(value);
 
@@ -117,7 +118,7 @@ export class CustomDateTimeEditor extends Component {
   }
 
   calcDateState(value) {
-    const d = (typeof value != 'undefined') ? new Date(value) : null;
+    const d = (typeof value !== 'undefined') ? new Date(value) : null;
 
     return {
       DD: d ? d.getDate() : undefined,
@@ -130,7 +131,7 @@ export class CustomDateTimeEditor extends Component {
   }
 
   componentWillReceiveProps(props) {
-    if ((props.value != this.props.value)) {
+    if ((props.value !== this.props.value)) {
       this.lastReceivedValue = props.value;
 
       if (!this.state.selectedElementName)
@@ -142,7 +143,7 @@ export class CustomDateTimeEditor extends Component {
   onDigitClick(name) {
     if (this.props.disabled) return;
 
-    if (this.state.selectedElementName != name) {
+    if (this.state.selectedElementName !== name) {
       this.setState({
         selectedElementName: name,
         keyboardValue: null
@@ -172,42 +173,42 @@ export class CustomDateTimeEditor extends Component {
   onKeyDown(e) {
     if (this.props.disabled || e.altKey || e.shiftKey || e.ctrlKey) return;
 
-    if (e.keyCode == this.KeyCodes.LEFT || e.keyCode == this.KeyCodes.BSP) {
+    if (e.keyCode === this.KeyCodes.LEFT || e.keyCode === this.KeyCodes.BSP) {
       this.selectPrevItem();
       e.preventDefault();
 
       return;
     }
 
-    if (e.keyCode == this.KeyCodes.RIGHT || e.keyCode == this.KeyCodes.SPACE) {
+    if (e.keyCode === this.KeyCodes.RIGHT || e.keyCode === this.KeyCodes.SPACE) {
       this.selectNextItem();
       e.preventDefault();
 
       return;
     }
 
-    if (e.keyCode == this.KeyCodes.DOWN) {
+    if (e.keyCode === this.KeyCodes.DOWN) {
       this.decrementCurrentValue();
       e.preventDefault();
 
       return;
     }
 
-    if (e.keyCode == this.KeyCodes.UP) {
+    if (e.keyCode === this.KeyCodes.UP) {
       this.incrementCurrentValue();
       e.preventDefault();
 
       return;
     }
 
-    if (e.keyCode == this.KeyCodes.ESC) {
+    if (e.keyCode === this.KeyCodes.ESC) {
       this.cancel();
       e.preventDefault();
 
       return;
     }
 
-    if (e.keyCode == this.KeyCodes.ENTER) {
+    if (e.keyCode === this.KeyCodes.ENTER) {
       if (this.state.keyboardValue) e.preventDefault();
 
       this.keyboardInputCommit(false, () => {
@@ -314,14 +315,14 @@ export class CustomDateTimeEditor extends Component {
 
     let value = this.state[elName];
 
-    if (typeof value == 'number') {
+    if (typeof value === 'number') {
       value--;
 
       if (value < field.min) {
         value = field.max;
       }
     } else {
-      value = (typeof field.defValue == 'number') ? field.defValue : field.max;
+      value = (typeof field.defValue === 'number') ? field.defValue : field.max;
     }
 
     let newState = {};
@@ -338,7 +339,7 @@ export class CustomDateTimeEditor extends Component {
 
     let value = this.state[elName];
 
-    if (typeof value == 'number') {
+    if (typeof value === 'number') {
       value++;
 
       if (value > field.max) {
@@ -346,7 +347,7 @@ export class CustomDateTimeEditor extends Component {
       }
 
     } else {
-      value = (typeof field.defValue == 'number') ? field.defValue : field.min;
+      value = (typeof field.defValue === 'number') ? field.defValue : field.min;
     }
 
     let newState = {};
@@ -365,9 +366,9 @@ export class CustomDateTimeEditor extends Component {
         year    = s.YYYY,
         month   = s.MM,
         day     = s.DD,
-        hours   = (typeof s.HH == 'number') ? s.HH : 0,
-        minutes = (typeof s.mm == 'number') ? s.mm : 0,
-        seconds = (typeof s.SS == 'number') ? s.SS : 0;
+        hours   = (typeof s.HH === 'number') ? s.HH : 0,
+        minutes = (typeof s.mm === 'number') ? s.mm : 0,
+        seconds = (typeof s.SS === 'number') ? s.SS : 0;
 
     if (year && month && day) {
 
@@ -395,16 +396,16 @@ export class CustomDateTimeEditor extends Component {
         year    = s.YYYY,
         month   = s.MM,
         day     = s.DD,
-        hours   = (typeof s.HH == 'number') ? s.HH : 0,
-        minutes = (typeof s.mm == 'number') ? s.mm : 0,
-        seconds = (typeof s.SS == 'number') ? s.SS : 0;
+        hours   = (typeof s.HH === 'number') ? s.HH : 0,
+        minutes = (typeof s.mm === 'number') ? s.mm : 0,
+        seconds = (typeof s.SS === 'number') ? s.SS : 0;
 
     if (year && month && day) {
 
       let date = new Date(year, month - 1, day, hours, minutes, seconds, 0);
       value = date.getTime();
 
-      if ((date.getDate() == day) && (date.getMonth() == month - 1) && (date.getFullYear() == year)) {
+      if ((date.getDate() === day) && (date.getMonth() === month - 1) && (date.getFullYear() === year)) {
 
         this.setState(
           this.calcDateState(value), () => {
@@ -442,10 +443,10 @@ export class CustomDateTimeEditor extends Component {
   onDocumentClick = event => {
     let e = event.target || event.srcElement;
 
-    if (e.id == 'popup') return;
+    if (e.id === 'popup') return;
 
     while (e = e.parentNode) {
-      if (e.id == 'popup') return;
+      if (e.id === 'popup') return;
     }
 
     this.setPopup();
@@ -486,7 +487,7 @@ export class CustomDateTimeEditor extends Component {
             length={2}
             value={this.state.DD}
             overrideValue={currentInputValue}
-            selected={(this.state.selectedElementName == 'DD') && !this.props.disabled}
+            selected={(this.state.selectedElementName === 'DD') && !this.props.disabled}
             onClick={name => this.onDigitClick(name)}/>
 
           <i className='dtime__sep'>-</i>
@@ -497,7 +498,7 @@ export class CustomDateTimeEditor extends Component {
             length={2}
             value={this.state.MM}
             overrideValue={currentInputValue}
-            selected={(this.state.selectedElementName == 'MM') && !this.props.disabled}
+            selected={(this.state.selectedElementName === 'MM') && !this.props.disabled}
             onClick={name => this.onDigitClick(name)}/>
 
           <i className='dtime__sep'>-</i>
@@ -508,7 +509,7 @@ export class CustomDateTimeEditor extends Component {
             length={4}
             value={this.state.YYYY}
             overrideValue={currentInputValue}
-            selected={(this.state.selectedElementName == 'YYYY') && !this.props.disabled}
+            selected={(this.state.selectedElementName === 'YYYY') && !this.props.disabled}
             exClassName='_size_middle'
             onClick={name => this.onDigitClick(name)}/>
 
@@ -520,7 +521,7 @@ export class CustomDateTimeEditor extends Component {
             length={2}
             value={this.state.HH}
             overrideValue={currentInputValue}
-            selected={(this.state.selectedElementName == 'HH') && !this.props.disabled}
+            selected={(this.state.selectedElementName === 'HH') && !this.props.disabled}
             onClick={name => this.onDigitClick(name)}/>
 
           <i className='dtime__sep'>:</i>
@@ -531,7 +532,7 @@ export class CustomDateTimeEditor extends Component {
             length={2}
             value={this.state.mm}
             overrideValue={currentInputValue}
-            selected={(this.state.selectedElementName == 'mm') && !this.props.disabled}
+            selected={(this.state.selectedElementName === 'mm') && !this.props.disabled}
             onClick={name => this.onDigitClick(name)}/>
 
           {this.props.useSeconds &&
@@ -543,7 +544,7 @@ export class CustomDateTimeEditor extends Component {
                 length={2}
                 value={this.state.SS}
                 overrideValue={currentInputValue}
-                selected={(this.state.selectedElementName == 'SS') && !this.props.disabled}
+                selected={(this.state.selectedElementName === 'SS') && !this.props.disabled}
                 onClick={name => this.onDigitClick(name)}/>
             </span>
           }

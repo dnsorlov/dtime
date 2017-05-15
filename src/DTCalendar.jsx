@@ -1,4 +1,5 @@
-import React, {Component, PropTypes as PT} from 'react';
+import React, {Component} from 'react';
+import PT from 'prop-types';
 import classNames from 'classnames';
 import DTMonthsGrid from './DTMonthGrid.jsx';
 import DTYearsGrid from './DTYearGrid.jsx'
@@ -52,7 +53,7 @@ export default class DTCalendar extends Component {
     let months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
         year = this.state.date.getFullYear();
 
-    if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+    if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0))
       months[1]++;
 
     return months[index] - 1;
@@ -120,14 +121,14 @@ export default class DTCalendar extends Component {
           clName[i] = '';
           days[i] = <div onClick={e => this.setValue(e)} key={'div' + c}>{c}</div>;
 
-          if (currentDate.getFullYear() == date.getFullYear()
-          &&  currentDate.getMonth() == date.getMonth()
-          &&  currentDate.getDate() == c)
+          if (currentDate.getFullYear() === date.getFullYear()
+          &&  currentDate.getMonth() === date.getMonth()
+          &&  currentDate.getDate() === c)
             clName[i] = 'currDay';
 
-          if (date.getFullYear() == valueDate.getFullYear()
-          &&  date.getMonth() == valueDate.getMonth()
-          &&  valueDate.getDate() == c)
+          if (date.getFullYear() === valueDate.getFullYear()
+          &&  date.getMonth() === valueDate.getMonth()
+          &&  valueDate.getDate() === c)
             clName[i] = 'selected'
         }
       }
